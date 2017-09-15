@@ -1,9 +1,15 @@
 Rails.application.routes.draw do
 
-  get 'ride/views'
+  root "static_pages#home"
 
-  get 'attraction/views'
+  get "/signin", to: "sessions#new"
+  post "/sessions/create", to: "sessions#create"
+  delete "/signout", to: "sessions#destroy"
 
-  get 'user/views'
+  post "/rides/new", to: "rides#new"
+
+  resources :attractions
+
+  resources :users
 
 end
